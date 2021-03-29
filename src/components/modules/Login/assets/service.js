@@ -1,15 +1,12 @@
-import { requestHttp } from "./../../../../reusable";
+import { requestHttp } from "@/js/reusable"
 
 export const loginProcess = async (email, password) => {
-	const requestBody = {
-		email,
-		password,
-	};
+    const requestBody = {
+        email,
+        password
+    }
 
-	const { data } = await requestHttp(
-		"http://localhost:4000/user/admin/login",
-		requestBody
-	);
+    const { data } = await requestHttp("http://localhost:4000/user/admin/login", requestBody)
 
-	return data;
-};
+    return data
+}

@@ -1,22 +1,74 @@
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles"
 
 const useStyles = makeStyles({
-	root: {
-		background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
-		border: 0,
-		borderRadius: 3,
-		boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
-		color: "white",
-		height: 48,
-		padding: "0 30px",
-	},
-	body: {
-		background: "none",
-		width: "100vw",
-		height: "100vh",
-		margin: 0,
-		padding: 0,
-	},
-});
+    adminSigninContainer: {
+        color: "#fff",
+        background: "#090f2c",
+        height: "100vh",
+        width: "100vw",
+        "& .footer": {
+            position: "fixed",
+            bottom: 0,
+            left: 0,
+            width: "100vw",
+            "& .footer-wrapper": {
+                paddingLeft: "10px",
+                paddingRight: "10px",
+                "& .MuiGrid-root *": {
+                    textDecoration: "none",
+                    color: "#fff",
+                    fontSize: 11
+                },
+                "@media screen and (max-width: 440px)": {
+                    "&": {
+                        flexDirection: "column",
+                        "& .MuiGrid-root *": {
+                            display: "block",
+                            marginBottom: 15
+                        }
+                    }
+                }
+            }
+        }
+    },
+    circular: {
+        root: {
+            color: "#fff"
+        }
+    },
+    h3Head: {
+        margin: 0
+    },
+    gridMain: {
+        height: "100%",
+        width: "100%"
+    },
+    wrapper: {
+        background: "#1D2139",
+        padding: "20px 20px",
+        borderRadius: "5%",
+        maxWidth: 500,
+        minWidth: 200,
+        width: 400,
+        "& .forgot small a": {
+            color: "#1EBCFF",
+            textDecoration: "none"
+        },
+        "& .forgot small": {
+            display: "block",
+            marginTop: "10px",
+            fontSize: 11
+        },
+        "@media screen and (max-width: 420px)": {
+            "&": {
+                margin: "0px 5%"
+            }
+        }
+    },
+    imageLogo: {
+        marginLeft: "50%",
+        transform: "translateX(-50%)"
+    }
+})
 
-export default useStyles;
+export default useStyles
