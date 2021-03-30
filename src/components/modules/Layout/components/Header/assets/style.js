@@ -32,10 +32,10 @@ export default makeStyles((theme) => ({
         }
     },
     iconToggler: {
-        background: "#676D8B",
+        background: "#d3dbeb",
         display: "none",
         "&:hover": {
-            background: "#868BA8"
+            background: "#e4e8f0"
         },
         "@media screen and (max-width: 400px)": {
             "&": {

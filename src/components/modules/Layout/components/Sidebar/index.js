@@ -1,93 +1,14 @@
 import React from "react"
-import { makeStyles } from "@material-ui/core/styles"
 import { Avatar } from "@material-ui/core"
 import List from "@material-ui/core/List"
 import ListItem from "@material-ui/core/ListItem"
 import ListItemIcon from "@material-ui/core/ListItemIcon"
 import ListItemText from "@material-ui/core/ListItemText"
-import InboxIcon from "@material-ui/icons/MoveToInbox"
-import DraftsIcon from "@material-ui/icons/Drafts"
-import SendIcon from "@material-ui/icons/Send"
+import Fab from "@material-ui/core/Fab"
+import HelpIcon from "@material-ui/icons/Help"
 
 import sidebars from "./assets/extra"
-
-const useStyles = makeStyles((theme) => ({
-    base: {
-        position: "fixed",
-        top: 52,
-        left: 0,
-        minWidth: 240,
-        width: 240,
-        height: "100vh",
-        background: "#1A253B",
-        "@media screen and (max-width: 400px)": {
-            "&": {
-                display: "none"
-            }
-        }
-    },
-    baseInfo: {
-        display: "flex",
-        alignItems: "center",
-        width: 200,
-        minHeight: 80,
-        height: "auto",
-        maxHeight: 500,
-        whiteSpace: "normal",
-        padding: "0px 20px"
-    },
-    info: {
-        width: "100%",
-        minHeight: 80,
-        maxHeight: 500,
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        "& small": {
-            marginLeft: 25,
-            marginBottom: 5,
-            color: "#fff",
-            textTransform: "uppercase",
-            wordBreak: "break-word"
-        }
-    },
-    avatar: {
-        color: "#404040",
-        backgroundColor: "#fff"
-    },
-    sidebarContainer: {
-        width: 220,
-        minHeight: 20,
-        maxHeight: 1000,
-        // background: "white",
-        padding: "0px 10px",
-        marginTop: 35
-    },
-    group: {
-        "& h6": {
-            color: "#E3E3E3"
-        }
-    },
-    groupList: {
-        "& .MuiListItem-root": {
-            color: "#fff",
-            "&:hover": {
-                background: "#253554"
-            },
-            "& .MuiListItemText-root": {
-                "& span": {
-                    fontSize: 12
-                }
-            },
-            "& .MuiListItemIcon-root svg": {
-                color: "#fff"
-            }
-        }
-    },
-    sub: {
-        marginTop: "-25px"
-    }
-}))
+import useStyles from "./assets/style"
 
 const SubView = ({ node }) => {
     const classes = useStyles()
@@ -132,6 +53,12 @@ const Sidebar = () => {
                             </div>
                         )
                     })}
+            </div>
+            <div className={classes.ask}>
+                <Fab variant="extended" size="small" color="primary" aria-label="add">
+                    <HelpIcon />
+                    Ask Question
+                </Fab>
             </div>
         </div>
     )
