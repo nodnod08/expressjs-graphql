@@ -1,8 +1,5 @@
 import React, { useEffect } from "react"
-import { makeStyles } from "@material-ui/core/styles"
-import { AppBar, Menu, MenuItem, ListItemIcon, Avatar } from "@material-ui/core"
-import Toolbar from "@material-ui/core/Toolbar"
-import IconButton from "@material-ui/core/IconButton"
+import { AppBar, Menu, MenuItem, ListItemIcon, Avatar, IconButton, Toolbar } from "@material-ui/core"
 import { Notifications, Message, Apps, AccountCircle, Settings, Favorite, ExitToApp } from "@material-ui/icons"
 import MenuIcon from "@material-ui/icons/Menu"
 import jwt_decode from "jwt-decode"
@@ -10,94 +7,7 @@ import jwt_decode from "jwt-decode"
 import Logo from "@/assets/Logo.svg"
 import { getCookie } from "@/js/reusable"
 import accountDetails from "./assets/accountDetails.svg"
-
-const useStyles = makeStyles((theme) => ({
-    appbar: {
-        height: 50,
-        background: "#1A253B"
-    },
-    logo: {
-        height: 40,
-        width: 40
-    },
-    icons: {
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-        gap: "15px",
-        "& .MuiIconButton-root span svg": {
-            color: "#fff"
-        },
-        "@media screen and (max-width: 400px)": {
-            "&": {
-                display: "none"
-            }
-        }
-    },
-    iconCircle: {
-        background: "#676D8B",
-        height: 35,
-        width: 35,
-        "&:hover": {
-            background: "#868BA8"
-        }
-    },
-    iconToggler: {
-        background: "#676D8B",
-        display: "none",
-        "&:hover": {
-            background: "#868BA8"
-        },
-        "@media screen and (max-width: 400px)": {
-            "&": {
-                display: "block"
-            }
-        }
-    },
-    toolbar: {
-        minHeight: 50,
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center"
-    },
-    menuButton: {
-        marginRight: theme.spacing(2)
-    },
-    title: {
-        flexGrow: 1
-    },
-    menu: {
-        "& .MuiList-root .MuiButtonBase-root": {
-            fontSize: 10,
-            fontWeight: "bold",
-            "& div": {
-                minWidth: 40
-            }
-        }
-    },
-    baseInfo: {
-        width: 300,
-        height: 70,
-        cursor: "default",
-        border: "none"
-    },
-    info: {
-        width: "100%",
-        height: 70,
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        "& small": {
-            marginLeft: 15
-        }
-    },
-    avatar: {
-        color: "#fff",
-        backgroundColor: "#07184a"
-    }
-}))
+import useStyles from "./assets/style"
 
 const PrimarySearchAppBar = () => {
     const classes = useStyles()
@@ -112,11 +22,11 @@ const PrimarySearchAppBar = () => {
         setAnchorEl(null)
     }
 
-    useEffect(() => {
-        const jwt = getCookie("jwt")
-        var decodedHeader = jwt_decode(jwt)
-        console.log(decodedHeader)
-    }, [])
+    // useEffect(() => {
+    //     const jwt = getCookie("jwt")
+    //     var decodedHeader = jwt_decode(jwt)
+    //     console.log(decodedHeader)
+    // }, [])
 
     return (
         <AppBar className={classes.appbar} position="fixed">
@@ -155,10 +65,10 @@ const PrimarySearchAppBar = () => {
                         onClose={handleClose}
                         className={classes.menu}
                     >
-                        <MenuItem style={{ outline: "none" }} className={classes.baseInfo}>
+                        <MenuItem style={{ outline: "none", whiteSpace: "normal" }} className={classes.baseInfo}>
                             <Avatar className={classes.avatar}>D</Avatar>
                             <div className={classes.info}>
-                                <small style={{ fontSize: 14, fontWeight: "bold", display: "block" }}>Dondomie Dungca</small>
+                                <small style={{ fontSize: 14, fontWeight: "bold" }}>Dondomie Dungca</small>
                                 <small style={{ fontSize: 11, fontWeight: "bold", display: "block" }}>Administrator</small>
                                 <small style={{ fontSize: 10, display: "block" }}>ID: 000-000-001</small>
                             </div>
