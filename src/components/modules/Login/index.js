@@ -32,7 +32,7 @@ const Login = () => {
                 strong: "Wait a little bit",
                 severity: "success"
             })
-            setCookie("jwt", result.token, 1)
+            setCookie("jwt", result.token, 14)
             setAlert(true)
             setCount(3)
         } else {

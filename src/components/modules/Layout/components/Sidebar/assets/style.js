@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
         width: 240,
         height: "100vh",
         background: "#1A253B",
-        "@media screen and (max-width: 400px)": {
+        "@media screen and (max-width: 450px)": {
             "&": {
                 display: "none"
             }
