@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
-import { AppBar, Menu, MenuItem, ListItemIcon, Avatar, IconButton, Toolbar } from "@material-ui/core"
+import { useDispatch, useSelector } from "react-redux"
+import { AppBar, Menu, MenuItem, ListItemIcon, Avatar, IconButton, Toolbar, Box } from "@material-ui/core"
 import { Notifications, Message, Apps } from "@material-ui/icons"
 import MenuIcon from "@material-ui/icons/Menu"
 import { Drawer } from "@material-ui/core"
@@ -7,12 +8,15 @@ import { Drawer } from "@material-ui/core"
 import Logo from "@/assets/Logo.svg"
 import accountDetails from "./assets/accountDetails.svg"
 import useStyles from "./assets/style"
-import { info_header } from "./assets/extra"
+import { INFO_HEADER } from "./assets/extra"
+import { getUser } from "./../actions"
 
-import DrawerList from "./drawerList"
+import DrawerList from "./DrawerList"
 
 const PrimarySearchAppBar = () => {
     const classes = useStyles()
+    const dispatch = useDispatch()
+    const user = useSelector((state) => state.header)
     const [anchorEl, setAnchorEl] = useState(null)
     const [drawer, setDrawer] = useState(false)
     const open = Boolean(anchorEl)
@@ -37,19 +41,23 @@ const PrimarySearchAppBar = () => {
         }
     })
 
+    useEffect(() => {
+        dispatch(getUser())
+    }, [])
+
     return (
         <>
             <AppBar className={classes.appbar} position="fixed">
                 <Toolbar className={classes.toolbar}>
-                    <div>
+                    <>
                         <img src={Logo} className={classes.logo} alt="" />
-                    </div>
-                    <div>
+                    </>
+                    <>
                         <IconButton onClick={handleDrawer} size="medium" className={classes.iconToggler}>
                             <MenuIcon fontSize="small" />
                         </IconButton>
-                    </div>
-                    <div className={classes.icons}>
+                    </>
+                    <Box className={classes.icons}>
                         <IconButton>
                             <Apps fontSize="small" />
                         </IconButton>
@@ -60,7 +68,7 @@ const PrimarySearchAppBar = () => {
                             <Notifications fontSize="small" />
                         </IconButton>
                         <IconButton className={classes.iconCircle} aria-label="account of current user" aria-controls="menu-appbar" aria-haspopup="true" onClick={handleMenu} color="inherit">
-                            <img style={{ width: 20, height: 20 }} src={accountDetails} alt="" />
+                            <img src={accountDetails} alt="" />
                         </IconButton>
                         <Menu
                             id="menu-appbar"
@@ -75,16 +83,16 @@ const PrimarySearchAppBar = () => {
                             onClose={handleClose}
                             className={classes.menu}
                         >
-                            <MenuItem style={{ outline: "none", whiteSpace: "normal" }} className={classes.baseInfo}>
+                            <MenuItem className={classes.baseInfo}>
                                 <Avatar className={classes.avatar}>D</Avatar>
-                                <div className={classes.info}>
-                                    <small style={{ fontSize: 14, fontWeight: "bold" }}>Dondomie Dungca</small>
-                                    <small style={{ fontSize: 11, fontWeight: "bold", display: "block" }}>Administrator</small>
-                                    <small style={{ fontSize: 10, display: "block" }}>ID: 000-000-001</small>
-                                </div>
+                                <Box className={classes.info}>
+                                    <small>{user.name}</small>
+                                    <small>{user.userType}</small>
+                                    <small>ID: {user.id}</small>
+                                </Box>
                             </MenuItem>
                             <br />
-                            {info_header.map((info, i) => {
+                            {INFO_HEADER.map((info, i) => {
                                 return (
                                     <MenuItem key={i}>
                                         <ListItemIcon>{info.icon}</ListItemIcon>
@@ -93,7 +101,7 @@ const PrimarySearchAppBar = () => {
                                 )
                             })}
                         </Menu>
-                    </div>
+                    </Box>
                 </Toolbar>
             </AppBar>
             <Drawer className={classes.drawerContainer} anchor="left" open={drawer} onClose={handleDrawer}>

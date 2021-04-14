@@ -14,6 +14,7 @@ require("./middleware/passport")(passport)
 const { applyMiddleware } = require("graphql-middleware")
 const permissions = require("./graphql/permissions")
 const hbs = require("express-handlebars")
+const { router } = require("bull-board")
 
 // customs
 const typeDefs = require("./graphql/schema")
@@ -82,7 +83,13 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 // page route list
-app.use("/", require("./routes/index"))
+app.use("/admin/dashboard", require("./routes/dashboard"))
+app.use("/admin/stocks", require("./routes/stocks"))
 app.use("/user", require("./routes/user"))
+app.use("/admin", require("./routes/index"))
 
-app.listen(PORT, () => console.log(`Running on port ${PORT}`))
+app.use("/admin/queues", router)
+
+app.listen(PORT, () => {
+    console.log(`Running on port ${PORT}`)
+})

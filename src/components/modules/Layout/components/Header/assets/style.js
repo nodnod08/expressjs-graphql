@@ -29,6 +29,10 @@ export default makeStyles((theme) => ({
         width: 35,
         "&:hover": {
             background: "#868BA8"
+        },
+        "& span img": {
+            height: 20,
+            width: 20
         }
     },
     iconToggler: {
@@ -77,7 +81,9 @@ export default makeStyles((theme) => ({
         minHeight: 70,
         maxHeight: 700,
         cursor: "default",
-        border: "none"
+        border: "none",
+        outline: "none",
+        whiteSpace: "normal"
     },
     info: {
         width: 300,
@@ -87,8 +93,19 @@ export default makeStyles((theme) => ({
         flexDirection: "column",
         overflowWrap: "break-word",
         justifyContent: "center",
-        "& small": {
-            marginLeft: 15
+        "& small:nth-child(1)": {
+            marginLeft: 15,
+            fontSize: 14,
+            fontWeight: "bold"
+        },
+        "& small:nth-child(2)": {
+            marginLeft: 15,
+            fontSize: 11,
+            fontWeight: "bold"
+        },
+        "& small:nth-child(3)": {
+            marginLeft: 15,
+            fontSize: 10
         }
     },
     avatar: {

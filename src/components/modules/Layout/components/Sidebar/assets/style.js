@@ -55,10 +55,13 @@ const useStyles = makeStyles((theme) => ({
             color: "#E3E3E3"
         }
     },
+    activeSidebar: {
+        background: "#253554"
+    },
     groupList: {
         "& .MuiListItem-root": {
             color: "#fff",
-            "&:hover": {
+            "&:hover, &:focus": {
                 background: "#253554"
             },
             "& .MuiListItemText-root": {

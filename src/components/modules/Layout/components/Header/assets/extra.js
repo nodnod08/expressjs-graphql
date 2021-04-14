@@ -2,7 +2,7 @@ import React from "react"
 import { Notifications, AccountCircle, Settings, Favorite, ExitToApp } from "@material-ui/icons"
 import { BarChart, Receipt, AttachMoney, Store, MailOutline, Description, Group, LocalMall, CastConnected, PlaylistAddCheck } from "@material-ui/icons"
 
-export const info_header = [
+export const INFO_HEADER = [
     {
         name: "MY ACCOUNT",
         url: "#",

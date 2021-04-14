@@ -4,7 +4,11 @@ const PROD_DIRECTORY = path.resolve(__dirname, "src/public")
 const miniCssExtractPlugin = require("mini-css-extract-plugin")
 
 module.exports = {
-    entry: { index: [path.resolve(__dirname, "./src/js/index.js"), path.resolve(__dirname, "./src/assets/index.scss")], dashboard: path.resolve(__dirname, "./src/js/dashboard.js") },
+    entry: {
+        index: [path.resolve(__dirname, "./src/js/index.js"), path.resolve(__dirname, "./src/assets/index.scss")],
+        menu: path.resolve(__dirname, "./src/js/menu.js"),
+        dashboard: path.resolve(__dirname, "./src/js/dashboard.js")
+    },
     output: {
         filename: "[name].bundle.js",
         path: DEV_DIRECTORY

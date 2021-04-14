@@ -1,4 +1,5 @@
 import React from "react"
+import { useSelector } from "react-redux"
 import { Avatar } from "@material-ui/core"
 import List from "@material-ui/core/List"
 import ListItem from "@material-ui/core/ListItem"
@@ -12,12 +13,13 @@ import useStyles from "./assets/style"
 
 const SubView = ({ node }) => {
     const classes = useStyles()
+    const user = useSelector((state) => state.header)
     return (
-        <List className={classes.groupList} component="nav" aria-labelledby="nested-list-subheader">
+        <List className={`${classes.groupList}`} component="nav" aria-labelledby="nested-list-subheader">
             {node.length &&
                 node.map((node_element, i) => {
                     return (
-                        <ListItem key={i} dense button component="a" href={node_element.url}>
+                        <ListItem className={`${user.url.activesidebar == node_element.tag ? classes.activeSidebar : ""}`} key={i} dense button component="a" href={node_element.url}>
                             <ListItemIcon>{node_element.icon}</ListItemIcon>
                             <ListItemText style={{ color: "#C0C0C0" }} primary={node_element.name} />
                         </ListItem>
@@ -29,15 +31,16 @@ const SubView = ({ node }) => {
 
 const Sidebar = () => {
     const classes = useStyles()
+    const user = useSelector((state) => state.header)
 
     return (
         <div className={classes.base}>
             <div className={classes.baseInfo}>
                 <Avatar className={classes.avatar}>D</Avatar>
                 <div className={classes.info}>
-                    <small style={{ fontSize: 12, fontWeight: "bold" }}>Dondomie Dungca</small>
-                    <small style={{ fontSize: 9, display: "block" }}>Administrator</small>
-                    <small style={{ fontSize: 9, display: "block" }}>ID: 000-000-001</small>
+                    <small style={{ fontSize: 12, fontWeight: "bold" }}>{user.name}</small>
+                    <small style={{ fontSize: 9, display: "block" }}>{user.userType}</small>
+                    <small style={{ fontSize: 9, display: "block" }}>{user.id}</small>
                 </div>
             </div>
             <hr style={{ height: 1, margin: "0px 20px", background: "#fff" }} />
